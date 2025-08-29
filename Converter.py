@@ -1,6 +1,7 @@
 import os, ujson
 from concurrent.futures import ProcessPoolExecutor
 
+# This is the processing logic
 def Json_File_Directory(folder_path, output_file):
     with open(output_file, "w", encoding="utf-8") as outfile:
         for filename in os.listdir(folder_path):
@@ -18,6 +19,7 @@ def Json_File_Directory(folder_path, output_file):
             outfile.flush()
         print(f"Created {output_file}")
 
+# This is the compiling logic
 def Jsonl_Output_Directory(parent_folder, output_folder, workers=4):
     os.makedirs(output_folder, exist_ok=True)
     with ProcessPoolExecutor(max_workers=workers) as executor:
@@ -30,6 +32,6 @@ def Jsonl_Output_Directory(parent_folder, output_folder, workers=4):
     print("All folders processed!")
 
 if __name__ == "__main__":
-    parent_directory = "Replace_Me"
-    output_directory = "Replace_Me"
-    Jsonl_Output_Directory(parent_directory, output_directory, workers=8)
+    parent_directory = "Replace_Me" # This is the directory that contains all of the json files you want to compress
+    output_directory = "Replace_Me" # This is the output directory for the .jsonl output
+    Jsonl_Output_Directory(parent_directory, output_directory, workers=8) # Workers=Number this is related to how many CPU Cores you want to be working on the conversion i recommed 1/4th of youre cpu core count.
