@@ -20,7 +20,7 @@ def Json_File_Directory(folder_path, output_file):
         print(f"Created {output_file}")
 
 # This is the compiling logic
-def Jsonl_Output_Directory(parent_folder, output_folder, workers=4):
+def Jsonl_Output_Directory(parent_folder, output_folder, workers=4): # These workers are editable as well would recommed this to be the same or half youre output workers.
     os.makedirs(output_folder, exist_ok=True)
     with ProcessPoolExecutor(max_workers=workers) as executor:
         tasks = [executor.submit(Json_File_Directory,
